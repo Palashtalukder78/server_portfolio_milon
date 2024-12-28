@@ -4,6 +4,10 @@ const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const path = require("path");
 const cookieParser = require("cookie-parser");
+const {
+  notFoundHandler,
+  errorHandler,
+} = require("./middlewares/common/errorHandler");
 
 const app = express();
 dotenv.config();
@@ -25,11 +29,11 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(cookieParser(process.env.COOKIE_SECRET));
 
 //Routing Setup
-
+//.......
 //404 not found
-//....
+app.use(notFoundHandler);
 //common error handler
-//....
+app.use(errorHandler);
 
 //listening app
 app.listen(process.env.PORT, () => {
