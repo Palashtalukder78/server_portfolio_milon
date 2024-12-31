@@ -8,6 +8,14 @@ function getProjects(req, res, next) {
     budgets: "1006",
   });
 }
+async function getProjects(req, res, next) {
+  try {
+    const projects = await Project.find();
+    res.json(projects);
+  } catch (err) {
+    next(err);
+  }
+}
 
 // Add Project
 async function addProject(req, res, next) {
