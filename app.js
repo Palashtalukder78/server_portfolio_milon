@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(cookieParser(process.env.COOKIE_SECRET));
 
 //Routing Setup
-app.use("/", loginRouter);
+app.use("/login", loginRouter);
 app.use("/projects", projectsRouter);
 
 //404 not found
